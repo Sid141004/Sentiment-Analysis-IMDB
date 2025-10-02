@@ -19,25 +19,45 @@ The project demonstrates **early stopping, checkpointing**, and provides **train
 
 IMDB-Sentiment-Analysis/
 │
+
 ├── data/ # Optional instructions to download IMDB dataset
+
 ├── notebooks/ # Step-by-step notebooks
+
 │ ├── 01_Preprocessing.ipynb
+
 │ ├── 02_Model_Setup.ipynb
+
 │ ├── 03_Training_Experiments.ipynb
+
 │ └── 04_Final_Analysis.ipynb
+
 ├── src/ # Python modules
+
 │ ├── dataset.py
+
 │ ├── model.py
+
 │ ├── train.py
+
 │ └── utils.py
+
 ├── results/
+
 │ ├── plots/
+
 │ │ ├── train_val_acc.png
+
 │ │ └── epoch_vs_train_acc.png
+
 │ └── reports/
+
 │ └── classification_reports.txt
+
 ├── requirements.txt
+
 ├── README.md
+
 └── LICENSE
 
 
@@ -63,6 +83,7 @@ Plots & Reports: Saved in results/
 ## Training Example:
 
 from src.train import train_model
+
 from src.model import FFNN
 
 model = FFNN(vocab_size=tokenizer.vocab_size, activation="relu", regularization="dropout")
@@ -71,9 +92,14 @@ train_acc, val_acc = train_model(model, train_loader, test_loader)
 
 ## Key Findings
 Model	Train Acc	Val Acc	Notes
+
+
 ReLU + Dropout (0.5)	0.85→0.94	0.83	Underfitting; poor F1 for positive class due to aggressive dropout
+
 ReLU + No Dropout	0.73→0.96	0.82	Stable F1-scores; minor overfitting
+
 Tanh + Dropout (0.5)	0.71→0.95	0.83-0.84	Best class-wise performance; avoids ReLU dead neuron issue
+
 
 ## Observations:
 
